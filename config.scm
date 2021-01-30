@@ -14,6 +14,7 @@
 	     (gnu packages package-management)
 	     (gnu packages fonts)
 	     (gnu packages shells)
+	     (gnu packages web-browsers)
 	     (gnu services desktop)
 	     (gnu services xorg)
 	     )
@@ -65,6 +66,7 @@
 		   rust
 		   font-terminus
 		   fish
+		   nyxt
 		   nss-certs
 		   %base-packages))
 
