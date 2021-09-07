@@ -5,3 +5,9 @@
 *.scm~
 *.scm#*
 .#*.scm
+
+*~
+
+**/elpa
+**/auto-save-list
+**/eshell

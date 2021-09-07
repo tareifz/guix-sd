@@ -1,0 +1,185 @@
+2021-07-01 09:19:57 Service root has been started.
+2021-07-01 09:19:57 Service pulseaudio has been started.
+2021-07-01 09:21:21 Service root has been started.
+2021-07-01 09:21:21 Service pulseaudio has been started.
+2021-07-01 09:24:05 Service root has been started.
+2021-07-01 09:24:05 Service pulseaudio has been started.
+2021-07-01 09:24:24 Service root has been started.
+2021-07-01 09:24:24 Service pulseaudio has been started.
+2021-07-01 09:24:33 Exiting shepherd...
+2021-07-01 09:24:33 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-01 09:24:33 Service pulseaudio has been stopped.
+2021-07-01 09:26:08 Service root has been started.
+2021-07-01 09:26:08 Service pulseaudio has been started.
+2021-07-01 09:27:25 Service root has been started.
+2021-07-01 09:27:25 Service pulseaudio has been started.
+2021-07-01 09:28:33 Service root has been started.
+2021-07-01 09:28:33 Service pulseaudio has been started.
+2021-07-01 09:35:31 Loading /home/tareifz/.config/shepherd/init.d/pulseaudio.scm.
+2021-07-01 09:35:31 Service pulseaudio conflicts with running services (pulseaudio).
+2021-07-01 09:35:47 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-01 09:35:47 Service pulseaudio has been stopped.
+2021-07-01 09:35:54 Loading /home/tareifz/.config/shepherd/init.d/pulseaudio.scm.
+2021-07-01 09:35:54 Service pulseaudio has been started.
+2021-07-01 09:36:27 Service pulseaudio has been stopped.
+2021-07-01 09:37:18 Service root has been started.
+2021-07-01 09:37:18 Service pulseaudio has been started.
+2021-07-01 09:38:08 Service root has been started.
+2021-07-01 09:38:08 Service pulseaudio has been started.
+2021-07-01 09:38:50 Exiting shepherd...
+2021-07-01 09:39:32 Exiting shepherd...
+2021-07-01 09:39:32 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-01 09:39:32 Service pulseaudio has been stopped.
+2021-07-01 09:39:44 Service root has been started.
+2021-07-01 09:39:44 Service pulseaudio has been started.
+2021-07-01 09:43:10 Exiting shepherd...
+2021-07-01 09:43:10 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-01 09:43:10 Service pulseaudio has been stopped.
+2021-07-01 09:43:16 Service root has been started.
+2021-07-01 09:43:16 Service pulseaudio has been started.
+2021-07-01 09:49:34 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-01 09:49:34 Service pulseaudio has been stopped.
+2021-07-01 09:50:26 Service pulseaudio has been started.
+2021-07-01 09:51:51 Exiting shepherd...
+2021-07-01 09:51:51 Service pulseaudio has been stopped.
+2021-07-01 09:59:58 Service root has been started.
+2021-07-01 09:59:58 Service pulseaudio has been started.
+2021-07-01 10:00:55 Exiting shepherd...
+2021-07-01 10:00:55 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-01 10:00:55 Service pulseaudio has been stopped.
+2021-07-04 09:23:14 Service root has been started.
+2021-07-04 09:23:14 Service pulseaudio has been started.
+2021-07-04 09:23:14 Respawning pulseaudio.
+2021-07-04 09:23:14 Service pulseaudio has been started.
+2021-07-04 09:23:14 Respawning pulseaudio.
+2021-07-04 09:23:14 Service pulseaudio has been started.
+2021-07-04 09:23:14 Respawning pulseaudio.
+2021-07-04 09:23:14 Service pulseaudio has been started.
+2021-07-04 09:23:14 Respawning pulseaudio.
+2021-07-04 09:23:14 Service pulseaudio has been started.
+2021-07-04 09:23:14 Respawning pulseaudio.
+2021-07-04 09:23:14 Service pulseaudio has been started.
+2021-07-04 09:23:14 Respawning pulseaudio.
+2021-07-04 09:23:14 Service pulseaudio has been started.
+2021-07-04 09:23:14 Service pulseaudio has been disabled.
+2021-07-04 09:23:14   (Respawning too fast.)
+2021-07-04 09:24:45 Service root has been started.
+2021-07-04 09:24:45 Service pulseaudio has been started.
+2021-07-04 09:24:45 Respawning pulseaudio.
+2021-07-04 09:24:45 Service pulseaudio has been started.
+2021-07-04 09:24:45 Respawning pulseaudio.
+2021-07-04 09:24:45 Service pulseaudio has been started.
+2021-07-04 09:24:45 Respawning pulseaudio.
+2021-07-04 09:24:45 Service pulseaudio has been started.
+2021-07-04 09:24:45 Respawning pulseaudio.
+2021-07-04 09:24:45 Service pulseaudio has been started.
+2021-07-04 09:24:45 Respawning pulseaudio.
+2021-07-04 09:24:45 Service pulseaudio has been started.
+2021-07-04 09:24:45 Respawning pulseaudio.
+2021-07-04 09:24:45 Service pulseaudio has been started.
+2021-07-04 09:24:45 Service pulseaudio has been disabled.
+2021-07-04 09:24:45   (Respawning too fast.)
+2021-07-04 09:26:01 Exiting shepherd...
+2021-07-04 09:26:01 Exiting shepherd...
+2021-07-04 09:39:55 Service root has been started.
+2021-07-04 09:39:55 Service pulseaudio has been started.
+2021-07-04 09:43:27 Exiting shepherd...
+2021-07-04 09:43:27 Service pulseaudio has been stopped.
+2021-07-04 09:48:25 Service root has been started.
+2021-07-04 09:48:25 Service pulseaudio has been started.
+2021-07-04 09:49:04 Exiting shepherd...
+2021-07-04 09:49:04 Service pulseaudio has been stopped.
+2021-07-04 12:01:03 Service root has been started.
+2021-07-04 12:01:03 Service pulseaudio has been started.
+2021-07-04 12:04:03 Exiting shepherd...
+2021-07-04 12:04:03 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-04 12:04:03 Service pulseaudio has been stopped.
+2021-07-04 12:06:21 Service root has been started.
+2021-07-04 12:06:21 Service pulseaudio has been started.
+2021-07-04 12:41:41 Service root has been started.
+2021-07-04 12:41:41 Service pulseaudio has been started.
+2021-07-04 12:42:25 Exiting shepherd...
+2021-07-04 12:42:25 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-04 12:42:25 Service pulseaudio has been stopped.
+2021-07-04 12:43:00 Service root has been started.
+2021-07-04 12:43:00 Service pulseaudio has been started.
+2021-07-04 12:43:55 Exiting shepherd...
+2021-07-04 12:43:55 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-04 12:43:55 Service pulseaudio has been stopped.
+2021-07-11 10:15:43 Service root has been started.
+2021-07-11 10:15:43 Service pulseaudio has been started.
+2021-07-11 11:53:08 Exiting shepherd...
+2021-07-11 11:53:08 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-11 11:53:08 Service pulseaudio has been stopped.
+2021-07-12 12:18:09 Service root has been started.
+2021-07-12 12:18:09 Service pulseaudio has been started.
+2021-07-12 13:00:32 Exiting shepherd...
+2021-07-12 13:00:32 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-12 13:00:32 Service pulseaudio has been stopped.
+2021-07-12 13:01:13 Service root has been started.
+2021-07-12 13:01:13 Service emacs has been started.
+2021-07-12 13:01:13 Service pulseaudio has been started.
+2021-07-12 13:06:10 Exiting shepherd...
+2021-07-12 13:06:10 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-12 13:06:10 Service pulseaudio has been stopped.
+2021-07-12 13:06:10 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-12 13:06:10 Service emacs has been stopped.
+2021-07-14 11:25:54 Service root has been started.
+2021-07-14 11:25:54 Service emacs has been started.
+2021-07-14 11:25:54 Service pulseaudio has been started.
+2021-07-14 11:51:07 Exiting shepherd...
+2021-07-14 11:51:07 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-14 11:51:07 Service emacs has been stopped.
+2021-07-14 11:51:07 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-14 11:51:07 Service pulseaudio has been stopped.
+2021-07-26 11:04:08 Service root has been started.
+2021-07-26 11:04:08 Service emacs has been started.
+2021-07-26 11:04:08 Service pulseaudio has been started.
+2021-07-26 12:58:32 Exiting shepherd...
+2021-07-26 12:58:32 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-26 12:58:32 Service emacs has been stopped.
+2021-07-26 12:58:32 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-26 12:58:32 Service pulseaudio has been stopped.
+2021-07-27 10:06:05 Service root has been started.
+2021-07-27 10:06:05 Service emacs has been started.
+2021-07-27 10:06:05 Service pulseaudio has been started.
+2021-07-27 13:21:12 Exiting shepherd...
+2021-07-27 13:21:12 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-27 13:21:12 Service emacs has been stopped.
+2021-07-27 13:21:12 system-error("getpgid" "~A" ("No such process") (3))
+2021-07-27 13:21:12 Service pulseaudio has been stopped.
+2021-08-07 16:18:59 Service root has been started.
+2021-08-07 16:18:59 Service emacs has been started.
+2021-08-07 16:18:59 Service pulseaudio has been started.
+2021-08-07 18:17:51 Exiting shepherd...
+2021-08-07 18:17:51 system-error("getpgid" "~A" ("No such process") (3))
+2021-08-07 18:17:51 Service emacs has been stopped.
+2021-08-07 18:17:51 system-error("getpgid" "~A" ("No such process") (3))
+2021-08-07 18:17:51 Service pulseaudio has been stopped.
+2021-08-08 11:11:42 Service root has been started.
+2021-08-08 11:11:42 Service emacs has been started.
+2021-08-08 11:11:42 Service pulseaudio has been started.
+2021-08-08 13:47:29 Exiting shepherd...
+2021-08-08 13:47:29 system-error("getpgid" "~A" ("No such process") (3))
+2021-08-08 13:47:29 Service emacs has been stopped.
+2021-08-08 13:47:29 system-error("getpgid" "~A" ("No such process") (3))
+2021-08-08 13:47:29 Service pulseaudio has been stopped.
+2021-08-09 09:25:54 Service root has been started.
+2021-08-09 09:25:54 Service emacs has been started.
+2021-08-09 09:25:54 Service pulseaudio has been started.
+2021-08-09 13:45:46 Exiting shepherd...
+2021-08-09 13:45:46 system-error("getpgid" "~A" ("No such process") (3))
+2021-08-09 13:45:46 Service pulseaudio has been stopped.
+2021-08-09 13:45:46 system-error("getpgid" "~A" ("No such process") (3))
+2021-08-09 13:45:46 Service emacs has been stopped.
+2021-09-05 09:34:54 Service root has been started.
+2021-09-05 09:34:54 Service emacs has been started.
+2021-09-05 09:34:54 Service pulseaudio has been started.
+2021-09-05 09:58:48 Exiting shepherd...
+2021-09-05 09:58:48 system-error("getpgid" "~A" ("No such process") (3))
+2021-09-05 09:58:48 Service emacs has been stopped.
+2021-09-05 09:58:48 system-error("getpgid" "~A" ("No such process") (3))
+2021-09-05 09:58:48 Service pulseaudio has been stopped.
+2021-09-06 09:08:06 Service root has been started.
+2021-09-06 09:08:06 Service emacs has been started.
+2021-09-06 09:08:06 Service pulseaudio has been started.
