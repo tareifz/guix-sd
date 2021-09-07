@@ -11,3 +11,5 @@
 **/elpa
 **/auto-save-list
 **/eshell
+# ignore all logs
+*.log

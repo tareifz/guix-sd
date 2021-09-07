@@ -12,10 +12,9 @@
    "shepherd"
    "git"
    "alacritty"
-   "sway"
-   "waybar"
    "rofi"
-   "emacs")
+   "emacs"
+   "gnupg")
 
 ;; we need to execute this for flatpak
 ;; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

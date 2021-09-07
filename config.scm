@@ -111,6 +111,7 @@
 		   fish
 		   nyxt
 		   gnupg
+		   pinentry
 		   openssh
 		   unzip
 		   pamixer
