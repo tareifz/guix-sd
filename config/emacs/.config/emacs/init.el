@@ -59,8 +59,8 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (toggle-scroll-bar -1)
-  (set-frame-font "GohuFont:pixelsize=14")
-  (set-face-attribute 'default nil :height 140))
+  ;; (set-frame-font "GohuFont:pixelsize=14")
+  (set-face-attribute 'default nil :height 120))
 
 (setq bookmark-save-flag 1)
 

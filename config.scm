@@ -3,36 +3,34 @@
 ;; root partition is encrypted with LUKS.
 
 (use-modules (gnu)
-	     (srfi srfi-1)
-	     (gnu packages emacs)
-	     (gnu packages wm)
-	     (gnu packages xorg)
-	     (gnu packages version-control)
-	     (gnu packages terminals)
-	     (gnu packages xdisorg)
-	     (gnu packages rust)
-	     (gnu packages lisp)
-	     (gnu packages certs)
-	     (gnu packages package-management)
-	     (gnu packages fonts)
-	     (gnu packages fontutils)
-	     (gnu packages ghostscript)
-	     (gnu packages shells)
-	     (gnu packages web-browsers)
-	     (gnu packages ssh)
-	     (gnu packages compression)
-	     (gnu packages gnupg)
-	     (gnu packages pulseaudio)
-	     (gnu packages video)
-	     (gnu packages gstreamer)
-	     (gnu packages package-management)
-	     (gnu services desktop)
-	     (gnu services xorg)
-	     (guix channels)
-	     (guix inferior)
-             (nongnu packages linux)
-             (nongnu system linux-initrd)
-	     )
+       (srfi srfi-1)
+       (gnu packages emacs)
+       (gnu packages wm)
+       (gnu packages xorg)
+       (gnu packages version-control)
+       (gnu packages terminals)
+       (gnu packages xdisorg)
+       (gnu packages rust)
+       (gnu packages java)
+       (gnu packages lisp)
+       (gnu packages certs)
+       (gnu packages package-management)
+       (gnu packages fonts)
+       (gnu packages fontutils)
+       (gnu packages ghostscript)
+       (gnu packages shells)
+       (gnu packages web-browsers)
+       (gnu packages ssh)
+       (gnu packages compression)
+       (gnu packages gnupg)
+       (gnu packages video)
+       (gnu packages package-management)
+       (gnu services desktop)
+       (gnu services xorg)
+       (guix channels)
+       (guix inferior)
+       (nongnu packages linux)
+       (nongnu system linux-initrd))
 
 (use-service-modules networking ssh)
 (use-package-modules screen gnome)
@@ -52,14 +50,14 @@
         (list (channel
                (name 'nonguix)
                (url "https://gitlab.com/nonguix/nonguix")
-               (commit "05107f1b94e24fa37a01ccbe51b8579846ecf792"))
+               (commit "fcab975d18c42be847d3b8cd907e20bfda7f551e"))
               (channel
                (name 'guix)
                (url "https://git.savannah.gnu.org/git/guix.git")
-               (commit "2c9d481c9098e18accd179f11edc1164e75f228e"))))
+               (commit "320c971f8e44abc65ed162f20cc93edbb07bd5f5"))))
        (inferior
         (inferior-for-channels channels)))
-      (first (lookup-inferior-packages inferior "linux" "5.10.11"))))
+      (first (lookup-inferior-packages inferior "linux" "5.14.8"))))
 
   (initrd microcode-initrd)
   (firmware  (list linux-firmware))
@@ -91,44 +89,32 @@
 
   ;; This is where we specify system-wide packages.
   (packages (cons* emacs
-		   stumpwm
-		   `(,stumpwm "lib")
-		   dzen
-		   xsetroot
-		   sbcl
-		   rofi
-		   alacritty
-		   git
-		   stow
-		   rust
-		   fontconfig
-		   font-terminus
-		   font-awesome
-		   gs-fonts
-		   font-dejavu
-		   font-gnu-freefont
-		   sbcl-stumpwm-ttf-fonts
-		   fish
-		   nyxt
-		   gnupg
-		   pinentry
-		   openssh
-		   unzip
-		   pamixer
-		   gstreamer
-		   gst-plugins-base
-		   gst-plugins-good
-		   gst-plugins-bad
-		   gst-plugins-ugly
-		   gst-libav
-		   intel-vaapi-driver
-		   libva-utils
-		   pulseaudio
-		   flatpak
-		   nss-certs
-		   %base-packages))
+       sbcl
+       alacritty
+       git
+       stow
+       rust-1.52
+       (list rust-1.52 "cargo")
+       (list rust-1.52 "rustfmt")
+       (list rust-1.52 "doc")
+       openjdk16
+       (list openjdk16 "jdk")
+       fontconfig
+       font-terminus
+       font-awesome
+       gs-fonts
+       font-dejavu
+       font-gnu-freefont
+       fish
+       gnupg
+       pinentry
+       openssh
+       unzip
+       intel-vaapi-driver
+       libva-utils
+       flatpak
+       nss-certs
+       %base-packages))
 
-  (services (cons* (service slim-service-type)
-		   (remove (lambda (service)
-		      (eq? (service-kind service) gdm-service-type))
-		    %desktop-services))))
+  (services (cons* (service gnome-desktop-service-type)
+        %desktop-services)))

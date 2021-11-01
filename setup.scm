@@ -10,6 +10,8 @@
    "wallpapers"
    "guix"
    "shepherd"
+   "bash"
+   "session"
    "git"
    "alacritty"
    "rofi"
@@ -18,3 +20,5 @@
 
 ;; we need to execute this for flatpak
 ;; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+(system "chmod +x /home/tareifz/tareifz-session.sh")
