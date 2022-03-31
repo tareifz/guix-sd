@@ -12,6 +12,7 @@
    "shepherd"
    "bash"
    "session"
+   "gnome"
    "git"
    "alacritty"
    "rofi"
@@ -22,3 +23,5 @@
 ;; sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 (system "chmod +x /home/tareifz/tareifz-session.sh")
+(system "chmod +x /home/tareifz/guix-sd/docker-apps/bin/*")
+(system "gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'")

@@ -11,6 +11,7 @@
        (gnu packages terminals)
        (gnu packages xdisorg)
        (gnu packages rust)
+       (gnu packages rust-apps)
        (gnu packages java)
        (gnu packages lisp)
        (gnu packages certs)
@@ -27,6 +28,7 @@
        (gnu packages package-management)
        (gnu services desktop)
        (gnu services xorg)
+       (gnu services docker)
        (guix channels)
        (guix inferior)
        (nongnu packages linux)
@@ -50,14 +52,14 @@
         (list (channel
                (name 'nonguix)
                (url "https://gitlab.com/nonguix/nonguix")
-               (commit "fcab975d18c42be847d3b8cd907e20bfda7f551e"))
+               (commit "39e4b41e5f7277b8d58084cd7aff8edde71f6572"))
               (channel
                (name 'guix)
                (url "https://git.savannah.gnu.org/git/guix.git")
-               (commit "320c971f8e44abc65ed162f20cc93edbb07bd5f5"))))
+               (commit "7e130d46000ce3c6dec88e28cefdfab19013688c"))))
        (inferior
         (inferior-for-channels channels)))
-      (first (lookup-inferior-packages inferior "linux" "5.14.8"))))
+      (first (lookup-inferior-packages inferior "linux" "5.15.11"))))
 
   (initrd microcode-initrd)
   (firmware  (list linux-firmware))
@@ -84,7 +86,8 @@
                 (comment "Tareif Al-Zamil")
                 (group "users")
                 (supplementary-groups '("wheel" "netdev"
-                                        "audio" "video")))
+                                        "audio" "video"
+					"docker")))
                %base-user-accounts))
 
   ;; This is where we specify system-wide packages.
@@ -93,10 +96,10 @@
        alacritty
        git
        stow
-       rust-1.52
-       (list rust-1.52 "cargo")
-       (list rust-1.52 "rustfmt")
-       (list rust-1.52 "doc")
+       rust
+       (list rust "cargo")
+       (list rust "rustfmt")
+       rust-analyzer
        openjdk16
        (list openjdk16 "jdk")
        fontconfig
@@ -117,4 +120,5 @@
        %base-packages))
 
   (services (cons* (service gnome-desktop-service-type)
+		   (service docker-service-type)
         %desktop-services)))
