@@ -69,14 +69,17 @@
     (with-temp-buffer (write-file custom-file)))
   (load-file custom-file)
 
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions
+                (lambda (frame)
+                  (select-frame frame)
+                  (tz/set-ui))))
+
   ;; Set the UI
   (tz/set-ui)
-  :hook ((before-save . 'whitespace-cleanup)
+  :hook ((before-save . whitespace-cleanup)
          (before-save . (lambda () (delete-trailing-whitespace)))
-         (after-make-frame-functions . (lambda (frame)
-                                         (select-frame frame)
-                                         (tz/set-ui)))
-         (crystal-mode . 'insert-crystal-template))
+         (crystal-mode . insert-crystal-template))
   :preface
   (defun tz/set-ui ()
     "Set UI settings (fonts, hide bars, ...)"
@@ -182,9 +185,18 @@
    (typescript-mode . lsp)
    (lsp-mode . lsp-enable-which-key-integration))
   :config
-  (setq lsp-rust-server 'rust-analyzer))
+  (setq lsp-rust-server 'rust-analyzer
+        lsp-completion-enable-additional-text-edit nil))
 
 (use-package lsp-ui)
+(use-package lsp-java
+  :hook (java-mode . lsp))
+(use-package lsp-treemacs)
+(use-package dap-mode
+  :after lsp-mode
+  :config (dap-auto-configure-mode))
+(use-package dap-java :ensure nil)
+
 
 (use-package auto-package-update
   :config
