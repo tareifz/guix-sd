@@ -102,9 +102,11 @@
       (insert-file-contents "~/.config/emacs/templates/crystal.cr"))))
 
 (use-package try)
+
 (use-package rainbow-mode
   :diminish t
   :hook (prog-mode . rainbow-mode))
+
 (use-package rainbow-delimiters
   :requires rainbow-mode
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -196,7 +198,6 @@
   :after lsp-mode
   :config (dap-auto-configure-mode))
 (use-package dap-java :ensure nil)
-
 
 (use-package auto-package-update
   :config
