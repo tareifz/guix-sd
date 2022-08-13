@@ -52,7 +52,8 @@
   (delete-selection-mode 1)
   (global-hl-line-mode 1)
   (global-auto-revert-mode 1)
-  (global-linum-mode t)
+  ;; (global-linum-mode t)
+  (global-display-line-numbers-mode)
   ;;
   (setq-default linum-format " %d "
                 indent-tabs-mode nil
@@ -88,6 +89,8 @@
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
     ;; (set-frame-font "GohuFont:pixelsize=14")
+    (set-frame-font "Terminus:pixelsize=16")
+    ;; (set-frame-font "Fira Code:pixelsize=18")
     (set-face-attribute 'default nil :height 110))
 
   (defun tz/load-only-theme ()
@@ -105,7 +108,9 @@
 
 (use-package rainbow-mode
   :diminish t
-  :hook (prog-mode . rainbow-mode))
+  :hook (prog-mode . rainbow-mode)
+  :config
+  (setq rainbow-x-colors nil))
 
 (use-package rainbow-delimiters
   :requires rainbow-mode
@@ -233,5 +238,7 @@
   (emacs-lisp-mode . aggressive-indent-mode)
   (lisp-mode . aggressive-indent-mode)
   (scheme-mode . aggressive-indent-mode))
+
+(use-package autothemer)
 
 ;;; init.el ends here
