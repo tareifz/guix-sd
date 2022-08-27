@@ -15,7 +15,7 @@
   (spirit-red "#e63946")
   (spirit-green "#8ac926")
   (spirit-blue "#404AFF")
-  (spirit-white "#E7E7E7") ; #CAC4CE
+  (spirit-white "#BBBBBB") ; #CAC4CE
   (spirit-dark "#000000" ) ;; "#1A1A1A"
   (spirit-dark-lighter1 "#121211")
   (spirit-dark-lighter2 "#3D3C3C")
@@ -30,12 +30,12 @@
   (link (:foreground spirit-blue :underline t))
   (link-visited (:foreground spirit-blue :underline) nil)
 
-  (mode-line (:foreground spirit-dark :background spirit-darkyellow :box nil))
-  (mode-line-inactive (:foreground spirit-dark :background spirit-yellow))
+  (mode-line (:foreground spirit-dark :background spirit-purple :box nil))
+  (mode-line-inactive (:foreground spirit-dark :background spirit-pink))
   (fringe (:background spirit-dark-lighter1))
   (linum (:background spirit-dark-lighter1))
   (line-number (:background spirit-dark-lighter1))
-  (line-number-current-line (:foreground spirit-dark :background spirit-green))
+  (line-number-current-line (:background spirit-dark-lighter2))
   (hl-line (:background spirit-dark-lighter1))
 
   (region (:background spirit-yellow :foreground spirit-dark-lighter1 :distant-foreground spirit-dark))
@@ -45,10 +45,12 @@
   (font-lock-comment-face (:foreground spirit-dark-lighter2))
   (font-lock-function-name-face (:foreground spirit-pink))
   (font-lock-keyword-face (:foreground spirit-purple :bold t))
-  (font-lock-string-face (:foreground spirit-green))
+  (font-lock-string-face (:foreground spirit-pink))
   (font-lock-variable-name-face (:foreground spirit-pink))
   (font-lock-type-face (:foreground spirit-orange))
-  (font-lock-warning-face (:foreground spirit-red :bold t))))
+  (font-lock-warning-face (:foreground spirit-red :bold t))
+
+  (show-paren-match (:background spirit-blue :foreground spirit-white))))
 
 (provide-theme 'dark-spirit)
 

@@ -32,9 +32,7 @@
         bookmark-save-flag 1
         make-backup-files nil
         backup-inhibited t
-        auto-save-default nil
-                                        ; Theme directory
-        custom-theme-directory "~/.config/emacs/themes/")
+        auto-save-default nil)
   ;; Set UTF-8 encoding.
   (set-language-environment 'utf-8)
   (set-terminal-coding-system 'utf-8)
@@ -89,8 +87,8 @@
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
     ;; (set-frame-font "GohuFont:pixelsize=14")
-    (set-frame-font "Terminus:pixelsize=16")
-    ;; (set-frame-font "Fira Code:pixelsize=18")
+    ;; (set-frame-font "Terminus:pixelsize=16")
+    (set-frame-font "Fira Code:pixelsize=16")
     (set-face-attribute 'default nil :height 110))
 
   (defun tz/load-only-theme ()
@@ -237,8 +235,13 @@
   :hook
   (emacs-lisp-mode . aggressive-indent-mode)
   (lisp-mode . aggressive-indent-mode)
-  (scheme-mode . aggressive-indent-mode))
+  (scheme-mode . aggressive-indent-mode)
+  (sly-mode . aggressive-indent-mode))
 
-(use-package autothemer)
+(use-package ef-themes
+  :config
+  (load-theme 'ef-summer))
+
+(use-package sly)
 
 ;;; init.el ends here
