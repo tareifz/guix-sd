@@ -54,6 +54,7 @@
   (global-display-line-numbers-mode)
   ;;
   (setq-default linum-format " %d "
+                ring-bell-function 'ignore
                 indent-tabs-mode nil
                 highlight-tabs t
                 show-trailing-whitespace t
@@ -240,7 +241,7 @@
 
 (use-package ef-themes
   :config
-  (load-theme 'ef-summer))
+  (load-theme 'ef-summer t))
 
 (use-package sly)
 
