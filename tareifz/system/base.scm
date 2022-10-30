@@ -84,9 +84,12 @@
                     fontconfig
                     font-terminus
                     font-awesome
-                    gs-fonts
+                    font-ghostscript
                     font-dejavu
                     font-gnu-freefont
+                    ;; for Japan, China, Korea
+                    font-adobe-source-han-sans
+                    font-wqy-zenhei
                     font-fira-code
                     fish
                     gnupg

@@ -5,6 +5,9 @@
 ;; See the "Replicating Guix" section in the manual.
 (define-module (tareifz home home-configuration)
   #:use-module (guix gexp)
+  #:use-module (guix packages)
+  #:use-module ((guix licenses) #:prefix license:)
+  #:use-module (guix build-system copy)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu packages emacs)
@@ -46,8 +49,58 @@
                     (".gitconfig" ,(local-file "files/git/gitconfig"))
                     (".gitignore" ,(local-file "files/git/gitignore")))))
 
+(define %home-docker-apps
+  (package
+   (name "home-docker-apps")
+   (version "0.1")
+   (source (local-file "../../docker-apps"
+                       #:recursive? #t))
+   (build-system copy-build-system)
+   (arguments
+    `(#:install-plan
+      '(("crystal.sh" "bin/crystal")
+        ("deno.sh" "bin/deno")
+        ("node.sh" "bin/node"))))
+   (home-page "https://github.com/tareifz/guix-sd")
+   (synopsis "Apps used through Docker.")
+   (description "Apps used through Docker.")
+   (license license:expat)))
+
+(define base-packages
+  (map specification->package
+       (list
+        "alacritty"
+        "emacs"
+        "curl"
+        "nss-certs"
+        "sbcl"
+        "git"
+        "gnupg"
+        "pinentry"
+        "unzip"
+        "intel-vaapi-driver"
+        "libva-utils"
+        "flatpak"
+        "firefox")))
+
+(define font-packages
+  (map specification->package
+       (list
+        "fontconfig"
+        "font-terminus"
+        "font-awesome"
+        "font-ghostscript"
+        "font-dejavu"
+        "font-gnu-freefont"
+        ;; for Japan, China, Korea
+        "font-adobe-source-han-sans"
+        "font-wqy-zenhei"
+        "font-fira-code")))
+
 (home-environment
- (packages (list emacs))
+ (packages `(,@base-packages
+             ,@font-packages
+             ,%home-docker-apps))
  (services
   (list %tareifz-home-files
         %tareifz-home-bash-service
