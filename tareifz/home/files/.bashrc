@@ -5,6 +5,8 @@
 # honor it and otherwise use /bin/sh.
 export SHELL
 
+export GPG_TTY=$(tty)
+
 if [[ $- != *i* ]]
 then
     # We are being invoked from a non-interactive shell.  If this

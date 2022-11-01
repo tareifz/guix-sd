@@ -37,10 +37,7 @@
                   home-environment-variables-service-type
                   `(("GUILE_LOAD_PATH" . "$HOME/guix-sd/")
                     ("FLATPAK_DIRS" . "/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share")
-                    ("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:$FLATPAK_DIRS")
-                    ("DOCKER_APPS_DIR" . "$HOME/guix-sd/docker-apps/bin")
-                    ("PATH" . "$DOCKER_APPS_DIR:$PATH")
-                    ("GPG_TTY" . "$(tty)"))))
+                    ("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:$FLATPAK_DIRS"))))
 
 (define %tareifz-home-files
   (simple-service 'tareifz-home-files
@@ -48,8 +45,8 @@
                   `(("tareifz-session.sh" ,(local-file "files/tareifz-session.sh"))
                     (".gitconfig" ,(local-file "files/git/gitconfig"))
                     (".gitignore" ,(local-file "files/git/gitignore"))
-                    ("Pictures/backgrounds/wallhaven-103837.jpg" ,(local-file "files/wallpapers/wallhaven-103837.jpg"))
-                    ("Pictures/backgrounds/wallhaven-168676.jpg" ,(local-file "files/wallpapers/wallhaven-168676.jpg"))
+                    ("wallpapers/wallhaven-103837.jpg" ,(local-file "files/wallpapers/wallhaven-103837.jpg"))
+                    ("wallpapers/wallhaven-168676.jpg" ,(local-file "files/wallpapers/wallhaven-168676.jpg"))
                     (".local/share/applications/emacs.desktop" ,(local-file "files/gnome/emacs.desktop")))))
 
 (define %tareifz-home-xdg-configuration-files
@@ -61,9 +58,6 @@
                     ("rofi/summerfruit.rasi" ,(local-file "files/rofi/summerfruit.rasi"))
                     ("rofi/flat-red.rasi" ,(local-file "files/rofi/flat-red.rasi"))
                     ("shepherd/init.scm" ,(local-file "files/shepherd/init.scm"))
-                    ("shepherd/init.d/emacs-daemon.scm" ,(local-file "files/shepherd/init.d/emacs-daemon.scm"))
-                    ("shepherd/init.d/gpg-agent.scm" ,(local-file "files/shepherd/init.d/gpg-agent.scm"))
-                    ("shepherd/init.d/pulseaudio.scm" ,(local-file "files/shepherd/init.d/pulseaudio.scm"))
                     ("emacs/init.el" ,(local-file "files/emacs/init.el"))
                     ("emacs/templates/crystal.cr" ,(local-file "files/emacs/templates/crystal.cr")))))
 
@@ -71,7 +65,7 @@
   (package
    (name "home-docker-apps")
    (version "0.1")
-   (source (local-file "../../docker-apps"
+   (source (local-file "files/docker-apps"
                        #:recursive? #t))
    (build-system copy-build-system)
    (arguments
