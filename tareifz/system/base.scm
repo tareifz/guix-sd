@@ -3,26 +3,21 @@
   #:use-module (gnu)
   #:use-module (gnu packages)
   #:use-module (gnu packages emacs)
-  #:use-module (gnu packages wm)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages xorg)
   #:use-module (gnu packages version-control)
-  #:use-module (gnu packages terminals)
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu packages rust)
   #:use-module (gnu packages rust-apps)
-  #:use-module (gnu packages lisp)
   #:use-module (gnu packages certs)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages fonts)
   #:use-module (gnu packages fontutils)
   #:use-module (gnu packages ghostscript)
-  #:use-module (gnu packages shells)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages gnupg)
   #:use-module (gnu packages video)
-  #:use-module (gnu packages package-management)
   #:use-module (gnu services desktop)
   #:use-module (gnu services xorg)
   #:use-module (gnu services docker)
@@ -73,10 +68,7 @@
 
    ;; This is where we specify system-wide packages.
    (packages (cons* emacs
-                    sbcl
-                    alacritty
                     git
-                    stow
                     rust
                     (list rust "cargo")
                     (list rust "rustfmt")
@@ -91,14 +83,12 @@
                     font-adobe-source-han-sans
                     font-wqy-zenhei
                     font-fira-code
-                    fish
                     gnupg
                     pinentry
                     openssh
                     unzip
                     intel-vaapi-driver
                     libva-utils
-                    flatpak
                     firefox
                     nss-certs
                     %base-packages))
@@ -114,5 +104,5 @@
               (inherit config)
               (substitute-urls (cons* "https://substitutes.nonguix.org"
                                       %default-substitute-urls))
-              (authorized-keys (cons* (local-file "~/.keys/non-guix.pub")
+              (authorized-keys (cons* (local-file "../.keys/non-guix.pub")
                                       %default-authorized-guix-keys)))))))))
