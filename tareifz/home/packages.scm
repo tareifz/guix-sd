@@ -2,21 +2,27 @@
   #:use-module (gnu packages))
 
 (define-public base-packages
-  (map specification->package
-       (list
-        "alacritty"
-        "emacs"
-        "curl"
-        "nss-certs"
-        "sbcl"
-        "git"
-        "gnupg"
-        "pinentry"
-        "unzip"
-        "intel-vaapi-driver"
-        "libva-utils"
-        "flatpak"
-        "firefox")))
+  (specifications->packages
+   (list
+    "alacritty"
+    "emacs"
+    "curl"
+    "nss-certs"
+    "sbcl"
+    "git"
+    "gnupg"
+    "pinentry"
+    "unzip"
+    "intel-vaapi-driver"
+    "libva-utils"
+    "flatpak"
+    "firefox"
+    "openjdk"
+    "openjdk:jdk"
+    "openjdk:doc"
+    "clojure"
+    "clojure-tools"
+    "leiningen")))
 
 (define-public font-packages
   (map specification->package
