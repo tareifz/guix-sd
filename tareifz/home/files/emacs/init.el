@@ -89,7 +89,8 @@
     (toggle-scroll-bar -1)
     ;; (set-frame-font "GohuFont:pixelsize=14")
     ;; (set-frame-font "Terminus:pixelsize=16")
-    (set-frame-font "Fira Code:pixelsize=16")
+    ;; (set-frame-font "Fira Code:pixelsize=16")
+    (set-frame-font "Fira Code SemiBold:style=SemiBold")
     (set-face-attribute 'default nil :height 110))
 
   (defun tz/load-only-theme ()
