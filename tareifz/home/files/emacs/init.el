@@ -45,7 +45,7 @@
   ;; use ibuffer
   (defalias 'list-buffers 'ibuffer)
   ;;
-  (electric-pair-mode 1)
+  ;; (electric-pair-mode 1) ;; enable only for non-lisps
   (show-paren-mode t)
   (delete-selection-mode 1)
   (global-hl-line-mode 1)
@@ -69,11 +69,11 @@
     (with-temp-buffer (write-file custom-file)))
   (load-file custom-file)
 
-  (if (daemonp)
-      (add-hook 'after-make-frame-functions
-                (lambda (frame)
-                  (select-frame frame)
-                  (tz/set-ui))))
+  (when (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+                (tz/set-ui))))
 
   ;; Set the UI
   (tz/set-ui)
@@ -227,11 +227,11 @@
   :hook
   (prog-mode . highlight-thing-mode))
 
-(use-package paredit
-  :hook
-  (emacs-lisp-mode . paredit-mode)
-  (lisp-mode . paredit-mode)
-  (scheme-mode . paredit-mode))
+;; (use-package paredit
+;;   :hook
+;;   (emacs-lisp-mode . paredit-mode)
+;;   (lisp-mode . paredit-mode)
+;;   (scheme-mode . paredit-mode))
 
 (use-package aggressive-indent
   :hook
@@ -245,5 +245,22 @@
   (load-theme 'ef-summer t))
 
 (use-package sly)
+(use-package clojure-mode)
+(use-package cider)
+
+(use-package highlight-indent-guides
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :config
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-character ?\|))
+
+(use-package parinfer-rust-mode
+  :hook
+  (emacs-lisp-mode . parinfer-rust-mode)
+  (lisp-mode . parinfer-rust-mode)
+  (scheme-mode . parinfer-rust-mode)
+  (clojure-mode . parinfer-rust-mode)
+  :init
+  (setq parinfer-rust-auto-download t))
 
 ;;; init.el ends here

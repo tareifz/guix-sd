@@ -63,33 +63,22 @@
                  (name "tareifz")
                  (comment "Tareif Al-Zamil")
                  (group "users")
-                 (supplementary-groups '("wheel" "netdev" "audio" "video"
-                                         "docker"))) %base-user-accounts))
+                 (supplementary-groups '("wheel"
+                                         "netdev"
+                                         "audio"
+                                         "video"
+                                         "docker")))
+                %base-user-accounts))
 
    ;; This is where we specify system-wide packages.
    (packages (cons* emacs
                     git
-                    ;; rust
-                    ;; (list rust "cargo")
-                    ;; (list rust "rustfmt")
-                    ;; rust-analyzer
-                    ;; fontconfig
-                    ;; font-terminus
-                    ;; font-awesome
-                    ;; font-ghostscript
-                    ;; font-dejavu
-                    ;; font-gnu-freefont
-                    ;; ;; for Japan, China, Korea
-                    ;; font-adobe-source-han-sans
-                    ;; font-wqy-zenhei
-                    ;; font-fira-code
                     gnupg
                     pinentry
                     openssh
                     unzip
                     intel-vaapi-driver
                     libva-utils
-                    ;; firefox
                     nss-certs
                     %base-packages))
 
