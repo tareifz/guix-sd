@@ -28,7 +28,7 @@
         user-mail-address "root@tareifz.me"
         inhibit-splash-screen 1
         initial-scratch-message nil
-        initial-major-mode 'lisp-mode
+        initial-major-mode 'emacs-lisp-mode
         bookmark-save-flag 1
         make-backup-files nil
         backup-inhibited t
@@ -45,7 +45,7 @@
   ;; use ibuffer
   (defalias 'list-buffers 'ibuffer)
   ;;
-  ;; (electric-pair-mode 1) ;; enable only for non-lisps
+  (electric-pair-mode 1) ;; enable only for non-lisps
   (show-paren-mode t)
   (delete-selection-mode 1)
   (global-hl-line-mode 1)
@@ -79,7 +79,9 @@
   (tz/set-ui)
   :hook ((before-save . whitespace-cleanup)
          (before-save . (lambda () (delete-trailing-whitespace)))
-         (crystal-mode . insert-crystal-template))
+         (crystal-mode . tareifz-insert-file-template)
+         (clojure-mode . tareifz-insert-file-template)
+         (emacs-lisp-mode . tareifz-insert-file-template))
   :preface
   (defun tz/set-ui ()
     "Set UI settings (fonts, hide bars, ...)"
@@ -87,9 +89,6 @@
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
-    ;; (set-frame-font "GohuFont:pixelsize=14")
-    ;; (set-frame-font "Terminus:pixelsize=16")
-    ;; (set-frame-font "Fira Code:pixelsize=16")
     (set-frame-font "Fira Code SemiBold:style=SemiBold")
     (set-face-attribute 'default nil :height 110))
 
@@ -100,9 +99,12 @@
       (disable-theme (car custom-enabled-themes)))
     (call-interactively 'load-theme))
 
-  (defun insert-crystal-template()
-    (when (= (point-max) (point-min))
-      (insert-file-contents "~/.config/emacs/templates/crystal.cr"))))
+  (defun tareifz-insert-file-template ()
+    "Insert template file into the current buffer based on `major-mode'
+when the buffer is empty."
+    (when (and (= (point-max) (point-min))
+               (not (string= (buffer-name) "*scratch*")))
+      (insert-file-contents (concat "~/.config/emacs/templates/" (symbol-name major-mode))))))
 
 (use-package try)
 
@@ -130,6 +132,7 @@
 (use-package fish-mode)
 (use-package yaml-mode)
 (use-package toml-mode)
+(use-package clojure-mode)
 
 (use-package multiple-cursors
   :bind
@@ -210,7 +213,7 @@
 
 (use-package restclient
   :config
-    (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode)))
+  (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode)))
 
 (use-package ivy
   :config
@@ -227,12 +230,6 @@
   :hook
   (prog-mode . highlight-thing-mode))
 
-;; (use-package paredit
-;;   :hook
-;;   (emacs-lisp-mode . paredit-mode)
-;;   (lisp-mode . paredit-mode)
-;;   (scheme-mode . paredit-mode))
-
 (use-package aggressive-indent
   :hook
   (emacs-lisp-mode . aggressive-indent-mode)
@@ -245,22 +242,19 @@
   (load-theme 'ef-summer t))
 
 (use-package sly)
-(use-package clojure-mode)
 (use-package cider)
+
+(use-package paredit
+  :hook
+  (emacs-lisp-mode . paredit-mode)
+  (lisp-mode . paredit-mode)
+  (scheme-mode . paredit-mode)
+  (clojure-mode . paredit-mode))
 
 (use-package highlight-indent-guides
   :hook (prog-mode . highlight-indent-guides-mode)
   :config
   (setq highlight-indent-guides-method 'character)
   (setq highlight-indent-guides-character ?\|))
-
-(use-package parinfer-rust-mode
-  :hook
-  (emacs-lisp-mode . parinfer-rust-mode)
-  (lisp-mode . parinfer-rust-mode)
-  (scheme-mode . parinfer-rust-mode)
-  (clojure-mode . parinfer-rust-mode)
-  :init
-  (setq parinfer-rust-auto-download t))
 
 ;;; init.el ends here

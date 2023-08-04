@@ -93,7 +93,10 @@
                     ("rofi/flat-red.rasi" ,(local-file "files/rofi/flat-red.rasi"))
                     ("shepherd/init.scm" ,(local-file "files/shepherd/init.scm"))
                     ("emacs/init.el" ,(local-file "files/emacs/init.el"))
-                    ("emacs/templates/crystal.cr" ,(local-file "files/emacs/templates/crystal.cr")))))
+                    ;; TODO: loop this!
+                    ("emacs/templates/crystal-mode" ,(local-file "files/emacs/templates/crystal-mode"))
+                    ("emacs/templates/clojure-mode" ,(local-file "files/emacs/templates/clojure-mode"))
+                    ("emacs/templates/emacs-lisp-mode" ,(local-file "files/emacs/templates/emacs-lisp-mode")))))
 
 (define-public tareifz-home-bash-service
   (service
