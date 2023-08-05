@@ -51,7 +51,10 @@
   (global-hl-line-mode 1)
   (global-auto-revert-mode 1)
   ;; (global-linum-mode t)
-  (global-display-line-numbers-mode)
+  (global-display-line-numbers-mode 0)
+
+  (add-to-list 'custom-theme-load-path (concat (file-name-directory (buffer-file-name)) "themes"))
+
   ;;
   (setq-default linum-format " %d "
                 ring-bell-function 'ignore
@@ -79,9 +82,9 @@
   (tz/set-ui)
   :hook ((before-save . whitespace-cleanup)
          (before-save . (lambda () (delete-trailing-whitespace)))
-         (crystal-mode . tareifz-insert-file-template)
-         (clojure-mode . tareifz-insert-file-template)
-         (emacs-lisp-mode . tareifz-insert-file-template))
+         (crystal-mode . tz/insert-file-template)
+         (clojure-mode . tz/insert-file-template)
+         (emacs-lisp-mode . tz/insert-file-template))
   :preface
   (defun tz/set-ui ()
     "Set UI settings (fonts, hide bars, ...)"
@@ -99,7 +102,7 @@
       (disable-theme (car custom-enabled-themes)))
     (call-interactively 'load-theme))
 
-  (defun tareifz-insert-file-template ()
+  (defun tz/insert-file-template ()
     "Insert template file into the current buffer based on `major-mode'
 when the buffer is empty."
     (when (and (= (point-max) (point-min))
@@ -259,10 +262,10 @@ when the buffer is empty."
   (scheme-mode . paredit-mode)
   (clojure-mode . paredit-mode))
 
-(use-package highlight-indent-guides
-  :hook (prog-mode . highlight-indent-guides-mode)
-  :config
-  (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-character ?\|))
+;; (use-package highlight-indent-guides
+;;   :hook (prog-mode . highlight-indent-guides-mode)
+;;   :config
+;;   (setq highlight-indent-guides-method 'character)
+;;   (setq highlight-indent-guides-character ?\|))
 
 ;;; init.el ends here
