@@ -32,9 +32,7 @@
     "libva-utils"
     "flatpak"
     "firefox"
-    ;; "openjdk"
     "openjdk:jdk"
-    ;; "openjdk:doc"
     "clojure"
     "clojure-tools"
     "leiningen"
@@ -89,14 +87,12 @@
                   home-xdg-configuration-files-service-type
                   `(("alacritty/alacritty.yml" ,(local-file "files/alacritty/alacritty.yml"))
                     ("gnupg/gpg-agent.conf" ,(local-file "files/gnupg/gpg-agent.conf"))
-                    ("rofi/summerfruit.rasi" ,(local-file "files/rofi/summerfruit.rasi"))
-                    ("rofi/flat-red.rasi" ,(local-file "files/rofi/flat-red.rasi"))
+                    ("rofi" ,(local-file "files/rofi" #:recursive? #t))
                     ("shepherd/init.scm" ,(local-file "files/shepherd/init.scm"))
                     ("emacs/init.el" ,(local-file "files/emacs/init.el"))
-                    ;; TODO: loop this!
-                    ("emacs/templates/crystal-mode" ,(local-file "files/emacs/templates/crystal-mode"))
-                    ("emacs/templates/clojure-mode" ,(local-file "files/emacs/templates/clojure-mode"))
-                    ("emacs/templates/emacs-lisp-mode" ,(local-file "files/emacs/templates/emacs-lisp-mode")))))
+                    ("emacs/templates" ,(local-file "files/emacs/templates" #:recursive? #t))
+                    ("emacs/lisp" ,(local-file "files/emacs/lisp" #:recursive? #t))
+                    ("emacs/themes" ,(local-file "files/emacs/themes" #:recursive? #t)))))
 
 (define-public tareifz-home-bash-service
   (service
