@@ -90,7 +90,7 @@
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
     (set-frame-font "Fira Code SemiBold:style=SemiBold")
-    (set-face-attribute 'default nil :height 110))
+    (set-face-attribute 'default nil :height 160))
 
   (defun tz/load-only-theme ()
     "Disable all themes and then load a single theme interactively."
@@ -104,7 +104,15 @@
 when the buffer is empty."
     (when (and (= (point-max) (point-min))
                (not (string= (buffer-name) "*scratch*")))
-      (insert-file-contents (concat "~/.config/emacs/templates/" (symbol-name major-mode))))))
+      (let* ((filename (buffer-name))
+             (current-year (format-time-string "%Y"))
+             (current-date (format-time-string "%Y-%m-%d"))
+             (filename-without-extension (string-remove-suffix ".el" filename)))
+        (insert-file-contents (concat "~/.config/emacs/templates/" (symbol-name major-mode)))
+        (replace-regexp-in-region "<%filename%>" filename)
+        (replace-regexp-in-region "<%current-year%>" current-year)
+        (replace-regexp-in-region "<%current-date%>" current-date)
+        (replace-regexp-in-region "<%filename-without-extention%>" filename-without-extension)))))
 
 (use-package try)
 
