@@ -53,9 +53,8 @@
   ;; (global-linum-mode t)
   (global-display-line-numbers-mode 0)
 
-  (add-to-list 'custom-theme-load-path (concat (file-name-directory (buffer-file-name)) "themes"))
+  (add-to-list 'custom-theme-load-path "~/.config/emacs/themes")
 
-  ;;
   (setq-default linum-format " %d "
                 ring-bell-function 'ignore
                 indent-tabs-mode nil
