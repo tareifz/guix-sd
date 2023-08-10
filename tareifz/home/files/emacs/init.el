@@ -22,6 +22,7 @@
 (setq use-package-always-ensure t)
 
 (use-package emacs
+
   :config
   ;; General Emacs configs
   (setq user-full-name "Tareif Al-Zamil"
@@ -58,7 +59,6 @@
                 ring-bell-function 'ignore
                 indent-tabs-mode nil
                 highlight-tabs t
-                show-trailing-whitespace t
                 tab-width 2
                 default-tab-width 2
                 tab-always-indent nil
@@ -66,9 +66,33 @@
                 js-indent-level 2
                 ;; Custom settings file
                 custom-file "~/.config/emacs/auto-generated-customized-settings.el")
+
+  (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+
   (unless (file-exists-p custom-file)
     (with-temp-buffer (write-file custom-file)))
   (load-file custom-file)
+
+  ;; Vertico configs??
+  ;; Do not allow the cursor in the minibuffer prompt
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+  ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
+  ;; Vertico commands are hidden in normal buffers.
+  (setq read-extended-command-predicate
+        #'command-completion-default-include-p)
+
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t)
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+  ;; corfu
+  (setq completion-cycle-threshold 3)
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (setq tab-always-indent 'complete)
 
   (when (daemonp)
     (add-hook 'after-make-frame-functions
@@ -90,6 +114,7 @@
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
+    (load-theme 'modus-operandi)
     (set-frame-font "Fira Code SemiBold:style=SemiBold")
     (set-face-attribute 'default nil :height 160))
 
@@ -113,9 +138,20 @@ when the buffer is empty."
         (replace-regexp-in-region "<%filename%>" filename)
         (replace-regexp-in-region "<%current-year%>" current-year)
         (replace-regexp-in-region "<%current-date%>" current-date)
-        (replace-regexp-in-region "<%filename-without-extention%>" filename-without-extension)))))
+        (replace-regexp-in-region "<%filename-without-extention%>" filename-without-extension))))
 
-(use-package diminish)
+  (defun crm-indicator (args)
+    (cons (format "[CRM%s] %s"
+                  (replace-regexp-in-string
+                   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                   crm-separator)
+                  (car args))
+          (cdr args))))
+
+(use-package diminish
+  :config
+  (diminish 'hi-lock-mode))
+
 (use-package try)
 
 (use-package rainbow-mode
@@ -128,14 +164,14 @@ when the buffer is empty."
   :requires rainbow-mode
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package company
-  :diminish company-mode
-  :hook (prog-mode . company-mode)
-  :config
-  (setq lsp-completion-provider :capf)
-  :custom
-  (company-idle-delay 0.1)
-  (company-tooltip-align-annotations t))
+;; (use-package company
+;;   :diminish company-mode
+;;   :hook (prog-mode . company-mode)
+;;   :config
+;;   (setq lsp-completion-provider :capf)
+;;   :custom
+;;   (company-idle-delay 0.1)
+;;   (company-tooltip-align-annotations t))
 
 (use-package rust-mode)
 (use-package typescript-mode)
@@ -227,13 +263,13 @@ when the buffer is empty."
   :config
   (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode)))
 
-(use-package ivy
-  :diminish ivy-mode
-  :config
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
-  (ivy-mode 1))
+;; (use-package ivy
+;;   :diminish ivy-mode
+;;   :config
+;;   (setq ivy-use-virtual-buffers t)
+;;   (setq ivy-count-format "(%d/%d) ")
+;;   (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+;;   (ivy-mode 1))
 
 (use-package counsel
   :diminish counsel-mode
@@ -256,7 +292,15 @@ when the buffer is empty."
 ;;   :config
 ;;   (load-theme 'ef-summer t))
 
-(use-package sly)
+(use-package sly
+  :config
+  (setq inferior-lisp-program "~/.guix-home/profile/bin/sbcl"))
+
+(use-package sly-asdf)
+(use-package sly-quicklisp)
+;; expand macros in file C-c M-e
+(use-package sly-macrostep)
+
 (use-package cider)
 
 (use-package paredit
@@ -265,5 +309,74 @@ when the buffer is empty."
   (lisp-mode . paredit-mode)
   (scheme-mode . paredit-mode)
   (clojure-mode . paredit-mode))
+
+(use-package vertico
+  :init
+  (vertico-mode)
+
+  ;; Different scroll margin
+  ;; (setq vertico-scroll-margin 0)
+
+  ;; Show more candidates
+  ;; (setq vertico-count 20)
+
+  ;; Grow and shrink the Vertico minibuffer
+  (setq vertico-resize t)
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  (setq vertico-cycle t))
+
+(use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
+;; Enable rich annotations using the Marginalia package
+(use-package marginalia
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+              ("M-A" . marginalia-cycle))
+
+  ;; The :init section is always executed.
+  :init
+
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
+  (marginalia-mode))
+
+(use-package corfu
+  ;; Optional customizations
+  :custom
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-separator ?\s)          ;; Orderless field separator
+  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
+  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
+  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
+
+  ;; Enable Corfu only for certain modes.
+  ;; :hook ((prog-mode . corfu-mode)
+  ;;        (shell-mode . corfu-mode)
+  ;;        (eshell-mode . corfu-mode))
+
+  ;; Recommended: Enable Corfu globally.
+  ;; This is recommended since Dabbrev can be used globally (M-/).
+  ;; See also `global-corfu-modes'.
+  :init
+  (global-corfu-mode))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
 
 ;;; init.el ends here

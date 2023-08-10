@@ -80,7 +80,8 @@
                     (".gitignore" ,(local-file "files/git/gitignore"))
                     ("wallpapers/wallhaven-103837.jpg" ,(local-file "files/wallpapers/wallhaven-103837.jpg"))
                     ("wallpapers/wallhaven-168676.jpg" ,(local-file "files/wallpapers/wallhaven-168676.jpg"))
-                    (".local/share/applications/emacs.desktop" ,(local-file "files/gnome/emacs.desktop")))))
+                    (".local/share/applications/emacs.desktop" ,(local-file "files/gnome/emacs.desktop"))
+                    (".sbclrc" ,(local-file "files/sbcl/sbclrc")))))
 
 (define-public tareifz-home-xdg-configuration-files
   (simple-service 'tareifz-home-xdg-configuration-files
