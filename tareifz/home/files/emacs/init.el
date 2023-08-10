@@ -50,7 +50,6 @@
   (delete-selection-mode 1)
   (global-hl-line-mode 1)
   (global-auto-revert-mode 1)
-  ;; (global-linum-mode t)
   (global-display-line-numbers-mode 0)
 
   (add-to-list 'custom-theme-load-path "~/.config/emacs/themes")
@@ -116,10 +115,11 @@ when the buffer is empty."
         (replace-regexp-in-region "<%current-date%>" current-date)
         (replace-regexp-in-region "<%filename-without-extention%>" filename-without-extension)))))
 
+(use-package diminish)
 (use-package try)
 
 (use-package rainbow-mode
-  :diminish t
+  :diminish rainbow-mode
   :hook (prog-mode . rainbow-mode)
   :config
   (setq rainbow-x-colors nil))
@@ -129,6 +129,7 @@ when the buffer is empty."
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package company
+  :diminish company-mode
   :hook (prog-mode . company-mode)
   :config
   (setq lsp-completion-provider :capf)
@@ -144,6 +145,9 @@ when the buffer is empty."
 (use-package toml-mode)
 (use-package clojure-mode)
 
+(use-package eldoc
+  :diminish eldoc-mode)
+
 (use-package multiple-cursors
   :bind
   ("C->" . mc/mark-next-like-this)
@@ -155,6 +159,7 @@ when the buffer is empty."
   ("C-x o" . switch-window))
 
 (use-package which-key
+  :diminish which-key-mode
   :config
   (which-key-mode)
   (which-key-setup-side-window-right-bottom))
@@ -163,6 +168,7 @@ when the buffer is empty."
   :bind ("C-=" . er/expand-region))
 
 (use-package flycheck
+  :diminish flycheck-mode
   :hook (prog-mode . flycheck-mode)
   :config
   (flycheck-add-mode 'javascript-eslint 'web-mode))
@@ -183,10 +189,6 @@ when the buffer is empty."
 (use-package hl-todo
   :config
   (global-hl-todo-mode))
-
-(use-package hlinum
-  :config
-  (hlinum-activate))
 
 (use-package docker
   :ensure t
@@ -226,6 +228,7 @@ when the buffer is empty."
   (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode)))
 
 (use-package ivy
+  :diminish ivy-mode
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
@@ -233,10 +236,12 @@ when the buffer is empty."
   (ivy-mode 1))
 
 (use-package counsel
+  :diminish counsel-mode
   :config
   (counsel-mode))
 
 (use-package highlight-thing
+  :diminish highlight-thing-mode
   :hook
   (prog-mode . highlight-thing-mode))
 
@@ -247,9 +252,9 @@ when the buffer is empty."
   (scheme-mode . aggressive-indent-mode)
   (sly-mode . aggressive-indent-mode))
 
-(use-package ef-themes
-  :config
-  (load-theme 'ef-summer t))
+;; (use-package ef-themes
+;;   :config
+;;   (load-theme 'ef-summer t))
 
 (use-package sly)
 (use-package cider)
@@ -260,11 +265,5 @@ when the buffer is empty."
   (lisp-mode . paredit-mode)
   (scheme-mode . paredit-mode)
   (clojure-mode . paredit-mode))
-
-;; (use-package highlight-indent-guides
-;;   :hook (prog-mode . highlight-indent-guides-mode)
-;;   :config
-;;   (setq highlight-indent-guides-method 'character)
-;;   (setq highlight-indent-guides-character ?\|))
 
 ;;; init.el ends here
