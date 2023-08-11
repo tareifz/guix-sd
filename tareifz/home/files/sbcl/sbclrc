@@ -12,5 +12,5 @@
 (dolist (dir (uiop:getenv-pathnames "LIBRARY_PATH"))
   ;; The path need / at the end, so ensure this
   (pushnew (uiop:ensure-directory-pathname dir)
-                   cffi:*foreign-library-directories*
-                   :test #'equal))
+           cffi:*foreign-library-directories*
+           :test #'equal))

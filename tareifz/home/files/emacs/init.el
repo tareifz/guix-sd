@@ -114,7 +114,7 @@
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (toggle-scroll-bar -1)
-    (load-theme 'modus-operandi)
+    ;; (load-theme 'modus-operandi)
     (set-frame-font "Fira Code SemiBold:style=SemiBold")
     (set-face-attribute 'default nil :height 160))
 
@@ -291,6 +291,12 @@ when the buffer is empty."
 ;; (use-package ef-themes
 ;;   :config
 ;;   (load-theme 'ef-summer t))
+
+(use-package base16-theme
+  :config
+  (load-theme 'base16-atelier-forest-light)
+  ;; (load-theme 'base16-pop)
+  )
 
 (use-package sly
   :config
