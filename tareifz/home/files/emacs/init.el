@@ -386,7 +386,8 @@ when the buffer is empty."
     "List all subscribed groups with or without un-read messages"
     (interactive)
     (gnus-group-list-all-groups 5))
-  :bind ("o" . my-gnus-group-list-subscribed-groups)
+  :bind (:map gnus-group-mode-map
+              ("o" . my-gnus-group-list-subscribed-groups))
   :config
   ;; Tree view for groups.
   (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
