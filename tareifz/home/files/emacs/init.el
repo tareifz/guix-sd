@@ -288,15 +288,9 @@ when the buffer is empty."
   (scheme-mode . aggressive-indent-mode)
   (sly-mode . aggressive-indent-mode))
 
-;; (use-package ef-themes
-;;   :config
-;;   (load-theme 'ef-summer t))
-
-(use-package base16-theme
+(use-package ef-themes
   :config
-  (load-theme 'base16-atelier-forest-light)
-  ;; (load-theme 'base16-pop)
-  )
+  (load-theme 'ef-summer t))
 
 (use-package sly
   :config
@@ -384,5 +378,57 @@ when the buffer is empty."
 (use-package savehist
   :init
   (savehist-mode))
+
+(use-package gnus
+  :preface
+  ;; {{ press "o" to view all groups
+  (defun my-gnus-group-list-subscribed-groups ()
+    "List all subscribed groups with or without un-read messages"
+    (interactive)
+    (gnus-group-list-all-groups 5))
+  :bind ("o" . my-gnus-group-list-subscribed-groups)
+  :config
+  ;; Tree view for groups.
+  (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+  ;; dribble
+  (setq gnus-use-dribble-file t)
+  (setq gnus-always-read-dribble-file t)
+  (setq gnus-select-method '(nntp "news.gwene.org")) ;; Read feeds/atom through gwene
+  (setq gnus-thread-sort-functions
+        '(gnus-thread-sort-by-most-recent-date
+          (not gnus-thread-sort-by-number)))
+  ;; NO 'passive
+  (setq gnus-use-cache t)
+  ;; Threads!  I hate reading un-threaded email -- especially mailing
+  ;; lists.  This helps a ton!
+  (setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject)
+  ;; Also, I prefer to see only the top level message.  If a message has
+  ;; several replies or is part of a thread, only show the first message.
+  ;; `gnus-thread-ignore-subject' will ignore the subject and
+  ;; look at 'In-Reply-To:' and 'References:' headers.
+  (setq gnus-thread-hide-subtree t)
+  (setq gnus-thread-ignore-subject t)
+  (setq gnus-message-archive-group '((format-time-string "sent.%Y")))
+  (unless (file-exists-p "~/.newsrc")
+    (make-symbolic-link "/home/tareifz/guix-sd/tareifz/home/files/emacs/.newsrc" "~/.newsrc")))
+
+(add-hook 'gnus-topic-mode-hook
+          (lambda ()
+            (setq gnus-topic-topology '(("GNUS" visible)
+                                        (("Lisp" visible))
+                                        (("Emacs" visible)
+                                         (("Gnus" visible)))
+                                        (("Guix" visible))))
+            (setq gnus-topic-alist '(("Lisp"
+                                      "gmane.lisp.common-lisp")
+                                     ("Emacs"
+                                      "gmane.emacs.announce")
+                                     ("Gnus"
+                                      "gmane.emacs.gnus.tutorial"
+                                      "gmane.emacs.gnus.general"
+                                      "gmane.emacs.gnus.announce")
+                                     ("Guix"
+                                      "gmane.comp.gnu.guix.announce")
+                                     ("GNUS")))))
 
 ;;; init.el ends here
