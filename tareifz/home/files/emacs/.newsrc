@@ -1,6 +1,17 @@
 gmane.lisp.common-lisp: 1-8
-gmane.emacs.announce: 178,181,183-184
+gmane.emacs.announce: 1-184
 gmane.emacs.gnus.tutorial: 1
-gmane.emacs.gnus.general: 1-3784,51739,91243,91245-91246
-gmane.emacs.gnus.announce:
-gmane.comp.gnu.guix.announce: 40-42
+gmane.emacs.gnus.general: 1-91247
+gmane.emacs.gnus.announce: 1-73
+gmane.comp.gnu.guix.announce: 1-42
+gmane.lisp.common-lisp-net.devel: 1579
+gmane.lisp.guile.devel:
+gmane.lisp.guile.user:
+gmane.lisp.quicklisp:
+gmane.lisp.steel-bank.announce:
+gmane.lisp.steel-bank.devel:
+gmane.lisp.steel-bank.general:
+gwene.org.fsf.news:
+gwene.org.fsf.static.fsforg.rss.blogs:
+gwene.org.gnu.guix.feeds.blog:
+gwene.org.gnu.software.guix.news:

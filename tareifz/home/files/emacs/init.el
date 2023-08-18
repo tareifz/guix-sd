@@ -419,9 +419,17 @@ when the buffer is empty."
                                         (("Lisp" visible))
                                         (("Emacs" visible)
                                          (("Gnus" visible)))
-                                        (("Guix" visible))))
+                                        (("Guix" visible))
+                                        (("Guile"visible))
+                                        (("GNU" visible)
+                                         (("FSF" visible)))))
             (setq gnus-topic-alist '(("Lisp"
-                                      "gmane.lisp.common-lisp")
+                                      "gmane.lisp.common-lisp"
+                                      "gmane.lisp.common-lisp-net.devel"
+                                      "gmane.lisp.quicklisp"
+                                      "gmane.lisp.steel-bank.announce"
+                                      "gmane.lisp.steel-bank.devel"
+                                      "gmane.lisp.steel-bank.general")
                                      ("Emacs"
                                       "gmane.emacs.announce")
                                      ("Gnus"
@@ -429,7 +437,16 @@ when the buffer is empty."
                                       "gmane.emacs.gnus.general"
                                       "gmane.emacs.gnus.announce")
                                      ("Guix"
-                                      "gmane.comp.gnu.guix.announce")
+                                      "gmane.comp.gnu.guix.announce"
+                                      "gwene.org.gnu.guix.feeds.blog"
+                                      "gwene.org.gnu.software.guix.news")
+                                     ("Guile"
+                                      "gmane.lisp.guile.devel"
+                                      "gmane.lisp.guile.user")
+                                     ("GNU")
+                                     ("FSF"
+                                      "gwene.org.fsf.news"
+                                      "gwene.org.fsf.static.fsforg.rss.blogs")
                                      ("GNUS")))))
 
 ;;; init.el ends here
